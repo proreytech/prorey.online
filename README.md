@@ -290,6 +290,34 @@ function createFrameMatches(req, res) {
 ```
 
 - - -
+## AWS Rekognition
+
+### Generate AI Labels for Images and Frames
+
+![rekognition](rekognition.png)
+
+Use AWS Rekognition SDK to categorize image/frame content
+
+```javascript
+function getLabels(req, res) {
+    let img = req.body.thumb.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
+    const params = {
+        Image: {
+            Bytes: new Buffer.from(img, 'base64')
+        },
+        MaxLabels: 10
+    }
+    new AWS.Rekognition().detectLabels(params, function (err, response) {
+        if (err) {
+            console.log(err, err.stack);
+        } else {
+            res.send(response);
+        }
+    });
+}
+```
+
+- - -
 
 ## Build and Deploy
 
