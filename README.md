@@ -14,6 +14,8 @@ ProRey Online is developed with modern serverless cloud **NAVEN** stack. New fea
 
 **NAVEN** stands for Neo4J, AngularJS, VisJS, ExpressJS and NodeJS
 
+![ProRey Architecture](pro-architecture.png)
+
 ### Why Single Page Web Application
 
 *   Nothing to download, nothing to install, no more desktop application updates
