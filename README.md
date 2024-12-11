@@ -292,13 +292,13 @@ function createFrameMatches(req, res) {
 ```
 
 - - -
-## AWS Rekognition
+## Neural Network Labelling
 
 ### Generate AI Labels for Images and Frames
 
 ![rekognition](rekognition.png)
 
-Use AWS Rekognition SDK to categorize image/frame content
+Use AWS **Rekognition** SDK
 
 ```javascript
 function getLabels(req, res) {
@@ -319,6 +319,24 @@ function getLabels(req, res) {
 }
 ```
 
+Use AWS Lambda with Docker Keras **ResNet50**
+
+```python
+model = ResNet50(weights="imagenet")
+
+def lambda_handler(event, context):
+    decoded_image = base64.b64decode(event["thumb"])
+    img = Image.open(BytesIO(decoded_image))
+    img = img.resize((224, 224)).convert("RGB")
+
+    x = np.array(img)
+    x = np.expand_dims(x, axis=0)
+    x = preprocess_input(x)
+
+    preds = model.predict(x)
+    predictions = decode_predictions(preds, top=10)[0]
+    return json.loads(json.dumps(predictions, default=str))
+```
 - - -
 
 ## Build and Deploy
