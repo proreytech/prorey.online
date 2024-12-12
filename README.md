@@ -10,7 +10,7 @@ by [ProRey Tech](https://prorey.com)
 
 ProRey Online generates Image and Video dHashes locally without uploading media files to cloud server. This makes dHashes comparison on cloud fast, private and secure. dHashes are stored and matched in graph database which makes storage horizontally scalable. Search time is dependent only on number of images or video frames in collection.
 
-ProRey Online is developed with modern serverless cloud **NAVEN** stack. New features can be added rapidly with JavaScript-based languages and cloud infrastructure cost is proportional to number of hashes stored. All modern browsers are supported.
+ProRey Online **PRO** is developed with modern serverless cloud **NAVEN** stack. New features can be added rapidly with JavaScript-based languages and cloud infrastructure cost is proportional to number of hashes stored. All modern browsers are supported.
 
 **NAVEN** stands for Neo4J, AngularJS, VisJS, ExpressJS and NodeJS
 
