@@ -136,8 +136,6 @@ function getImageData(img, width, height) {
 
 ![dHash](dhash.png)
 
- and similar vertical scrolling pattern
-
 **Hamming** distance between two integers is the number of positions at which the corresponding bits are different
 
 ```
