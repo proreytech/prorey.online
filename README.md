@@ -136,7 +136,7 @@ function getImageData(img, width, height) {
 
 ![dHash](dhash.png)
 
-**Hamming** distance between two integers is the number of positions at which the corresponding bits are different
+ **Hamming** distance between two integers is the number of positions at which the corresponding bits are different
 
 ```
 dHash1 = (1,0,1,0,0,0,1,1,1,0,1)
@@ -148,12 +148,15 @@ function hamming(x, y) {
     return (x ^ y).toString(2).split('1').length - 1;
 }
 ```
+ **Neo4J** provides `apoc.text.hammingDistance()` method
 
- **Neo4J** provides `apoc.text.hammingDistance()` method
+ Video key frames are calculated by comparing subsequent frames to each other at 25FPS till hamming distance exceeds a variance parameter.
 
- Video key frames are calculated by comparing subsequent frames to each other at 25FPS till hamming distance exceeds a variance parameter.
+ Images and Video key frames are compared to each other and are considered visually similar when hamming distance is below variance parameter.
 
- Images and Video key frames are compared to each other and are considered visually similar when hamming distance is below variance parameter.
+ Use **VisJS** library to visualize Image matches. Line thickness indicates Hamming distance.
+
+![matching](matching.png)
 
 ### Access local image/video files
 
@@ -290,6 +293,40 @@ function createFrameMatches(req, res) {
 ```
 
 - - -
+
+## Images Clustering
+
+### Use ML algorithms
+
+![clustering](clustering.png)
+
+Use **PrinceMCA** ML library to project dHashes to 2D plot
+
+```python
+def lambda_handler(event, _):
+    df = pd.read_csv(StringIO(event), header=None, index_col=0)
+    dataset = df[1].apply(lambda x: pd.Series(list(x)))
+    mca = prince.MCA(n_components=2)
+    mca = mca.fit(dataset)
+    row_coordinates = mca.row_coordinates(dataset).to_csv(header=None)
+    return row_coordinates
+```
+
+Use **KModes** ML algorithm to assign clusters based on dHash hamming distances
+
+```javascript
+let vectors = [];
+records.forEach((record, idx) => {
+    let data = record.toObject();
+    let img = Array.from(data.source.properties.dhash);
+    img.push(idx);
+    vectors.push(img);
+});
+const result = kmodes.kmodes(vectors, numClusters);
+```
+
+- - -
+
 ## Neural Network Labelling
 
 ### Generate AI Labels for Images and Frames
@@ -335,6 +372,7 @@ def lambda_handler(event, context):
     predictions = decode_predictions(preds, top=10)[0]
     return json.loads(json.dumps(predictions, default=str))
 ```
+
 - - -
 
 ## Build and Deploy
