@@ -305,9 +305,8 @@ Use **PrinceMCA** ML library to project dHashes to 2D plot
 ```python
 def lambda_handler(event, _):
     df = pd.read_csv(StringIO(event), header=None, index_col=0)
-    dataset = df[1].apply(lambda x: pd.Series(list(x)))
-    mca = prince.MCA(n_components=2)
-    mca = mca.fit(dataset)
+    dataset = df[1].apply(lambda dhash: pd.Series(list(dhash)))
+    mca = prince.MCA(n_components=2).fit(dataset)
     row_coordinates = mca.row_coordinates(dataset).to_csv(header=None)
     return row_coordinates
 ```
@@ -317,8 +316,7 @@ Use **KModes** ML algorithm to assign clusters based on dHash hamming distances
 ```javascript
 let vectors = [];
 records.forEach((record, idx) => {
-    let data = record.toObject();
-    let img = Array.from(data.source.properties.dhash);
+    let img = Array.from(record.toObject().source.properties.dhash);
     img.push(idx);
     vectors.push(img);
 });
