@@ -352,10 +352,10 @@ function getLabels(req, res) {
 }
 ```
 
-Use AWS Lambda with Docker Keras **ResNet50**
+Use AWS Lambda with Docker Keras **ResNet**
 
 ```python
-model = ResNet50(weights="imagenet")
+model = ResNet152V2(weights="imagenet")
 
 def lambda_handler(event, context):
     decoded_image = base64.b64decode(event["thumb"])
