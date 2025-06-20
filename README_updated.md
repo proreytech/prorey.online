@@ -1,12 +1,14 @@
-# ProRey Online ![Logo](prorey-logo.png)
+# ProRey Online
 
-![ProRey Online](prorey-online.png)
+![Logo](prorey-logo.png)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)  
 by [ProRey Tech](https://prorey.com)  
 Live: [prorey.online](https://prorey.online)
 
 ProRey Online is a single-page application for tagging and comparing images and videos locally. It uses perceptual hashing (dHash) to identify similarities and stores data in a scalable graph database. Built using the **NAVEN** stack (Neo4J, AngularJS, VisJS, ExpressJS, NodeJS), it supports cloud-based comparisons without uploading media files.
+
+![ProRey Online](prorey-online.png)
 
 ---
 
@@ -42,10 +44,11 @@ ProRey Online is a single-page application for tagging and comparing images and 
 | **ExpressJS**| Backend REST API via AWS Lambda               |
 | **NodeJS**   | Runtime for serverless backend logic          |
 
+![ProRey Architecture](pro-architecture.png)
+
 ---
 
 ## UI & User Experience
-![ProRey Architecture](pro-architecture.png)
 
 - **Landing Page**: Bootstrap static site hosted on AWS S3 + CloudFront.  
 - **Main App**: AngularJS SPA hosted separately on AWS S3 + CloudFront.
