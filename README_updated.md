@@ -1,5 +1,7 @@
 # ProRey Online ![Logo](prorey-logo.png)
 
+![ProRey Online](prorey-online.png)
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)  
 by [ProRey Tech](https://prorey.com)  
 Live: [prorey.online](https://prorey.online)
@@ -43,6 +45,8 @@ ProRey Online is a single-page application for tagging and comparing images and 
 ---
 
 ## UI & User Experience
+![ProRey Architecture](pro-architecture.png)
+
 - **Landing Page**: Bootstrap static site hosted on AWS S3 + CloudFront.  
 - **Main App**: AngularJS SPA hosted separately on AWS S3 + CloudFront.
 - **Routing**: Handled with Angular's `routeProvider`.
@@ -76,11 +80,19 @@ function getImageData(img, width, height) {
 ```
 
 ### dHash & Hamming Comparison
+![dHash](dhash.png)
 ```js
 function hamming(x, y) {
     return (x ^ y).toString(2).split('1').length - 1;
 }
 ```
+
+**Hamming Distance Example**  
+dHash1 = (1,0,1,0,0,0,1,1,1,0,1)  
+dHash2 = (0,0,1,1,0,1,1,1,0,0,0)  
+hamming = 5
+
+![matching](matching.png)
 
 ### Local & Cloud File Access
 - Local files: ⧈ marked, stored with IndexedDB
@@ -94,6 +106,10 @@ function hamming(x, y) {
 - APIs exposed via AWS API Gateway (with CORS)
 
 ### Neo4J Graph Design
+![dHash](graph1.png)  
+![dHash](graph2.png)  
+![dHash](graph.png)
+
 - Nodes: Users, Images, Frames, Videos  
 - Relationships: `BELONGS`, `MATCH`, `SOURCE`, `SET`  
 - All business logic via Neo4J Cypher queries
@@ -113,10 +129,14 @@ const CREATE_MATCHES_FRAME = `
 
 ## Machine Learning & Labeling
 ### Clustering
+![clustering](clustering.png)
+
 - dHash 2D projection using [Prince MCA](https://github.com/MaxHalford/prince)  
 - Clustered using KModes based on Hamming distances
 
 ### Image Labeling
+![rekognition](rekognition.png)
+
 - Uses AWS Rekognition SDK and ResNet152V2 in Dockerized Lambda
 - Top-10 labels returned per image/frame
 
