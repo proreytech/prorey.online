@@ -91,9 +91,11 @@ function hamming(x, y) {
 ```
 
 **Hamming Distance Example**  
-dHash1 = (1,0,1,0,0,0,1,1,1,0,1)  
-dHash2 = (0,0,1,1,0,1,1,1,0,0,0)  
-hamming = 5
+```
+dHash1 = (1,0,1,0,0,0,1,1,1,0,1)
+dHash2 = (0,0,1,1,0,1,1,1,0,0,0)
+hamming = 1+0+0+1+0+1+0+0+1+0+1 = 5
+```
 
 ![matching](matching.png)
 
@@ -113,7 +115,7 @@ hamming = 5
 ![dHash](graph2.png)  
 ![dHash](graph.png)
 
-- Nodes: Users, Images, Frames, Videos  
+- Nodes: `Users`, `Images`, `Frames`, `Videos`  
 - Relationships: `BELONGS`, `MATCH`, `SOURCE`, `SET`  
 - All business logic via Neo4J Cypher queries
 
