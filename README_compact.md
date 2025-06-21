@@ -35,7 +35,7 @@ ProRey Online is a single-page application for tagging and comparing images and 
 
 ---
 
-## Tech Stack
+## NAVEN Tech Stack
 | Component    | Description                                   |
 |--------------|-----------------------------------------------|
 | **Neo4J**    | Graph database used for storing dHash links   |
