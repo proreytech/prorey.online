@@ -14,7 +14,7 @@ ProRey Online is a single-page application for tagging and comparing images and 
 
 ## Table of Contents
 1. [Features](#features)
-2. [Tech Stack](#tech-stack)
+2. [NAVEN Tech Stack](#naven-tech-stack)
 3. [UI & User Experience](#ui--user-experience)
 4. [Client-Side Processing](#client-side-processing)
 5. [Backend & Graph Database](#backend--graph-database)
