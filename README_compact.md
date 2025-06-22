@@ -115,8 +115,22 @@ hamming = 1+0+0+1+0+1+0+0+1+0+1 = 5
 ![dHash](graph2.png)  
 ![dHash](graph.png)
 
-- Nodes: `Users`, `Images`, `Frames`, `Videos`  
-- Relationships: `BELONGS`, `MATCH`, `SOURCE`, `SET`  
+- Nodes
+  - `Image`
+  - `ImageFile`
+  - `ImageSet`
+  - `Settings`
+  - `Source`
+  - `Tag`
+  - `User`
+  - `Video`
+  - `VideoFile`  
+- Relationships
+  - `BELONGS`
+  - `MATCH`
+  - `SOURCE`
+  - `SET`
+  - `TAGGED`  
 - All business logic via Neo4J Cypher queries
 
 ```js
